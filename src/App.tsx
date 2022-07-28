@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+import logo from './logo.jpg';
 import './App.css';
 
 function App() {
@@ -8,15 +8,15 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+         __init__
         </p>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://soundcloud.com/birdgang4ever/object-object-live-minimix-1"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Listen to the minimix
         </a>
       </header>
     </div>
