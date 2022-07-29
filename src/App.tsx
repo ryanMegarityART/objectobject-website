@@ -17,10 +17,11 @@ function App() {
           allow="autoplay"
           src="https://w.soundcloud.com/player/?url=https://soundcloud.com/birdgang4ever/object-object-live-minimix-1?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
         ></iframe>
-          <SocialIcon
-            style={{ margin: "30px" }}
-            url="https://www.instagram.com/objectobjectav/"
-          />
+        <SocialIcon
+          style={{ margin: "30px" }}
+          url="https://www.instagram.com/objectobjectav/"
+          target="_blank"
+        />
       </header>
     </div>
   );
