@@ -2,12 +2,22 @@ import React from "react";
 import logo from "./logo.jpg";
 import "./App.css";
 import { SocialIcon } from "react-social-icons";
+import LogoCanvas from "./LogoCanvas";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <header
+        className="App-header"
+        // style={{
+        //   backgroundImage: `url(${logo})`,
+        //   backgroundPosition: "center",
+        //   backgroundSize: "cover",
+        //   backgroundRepeat: "no-repeat",
+        // }}
+      >
+        {/* <img src={logo} className="App-logo" alt="logo" /> */}
+        <LogoCanvas />
         <p>__init__</p>
         <iframe
           width="100%"
