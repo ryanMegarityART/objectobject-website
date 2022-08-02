@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "./logo.jpg";
 import "./App.css";
 import { SocialIcon } from "react-social-icons";
 import LogoCanvas from "./LogoCanvas";
@@ -20,6 +19,7 @@ function App() {
         <LogoCanvas />
         <p>__init__</p>
         <iframe
+          title="soundcloud"
           width="100%"
           height="166"
           scrolling="no"

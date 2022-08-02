@@ -69,12 +69,12 @@ export default function LogoCanvas() {
         let r = typeData[len * 4];
         let g = typeData[len * 4 + 1];
         let b = typeData[len * 4 + 2];
-        let a = typeData[len * 4 + 3];
+        // let a = typeData[len * 4 + 3];
 
         const x = cellWidth * row;
         const y = cellHeight * col;
         const w = cellWidth;
-        const h = cellHeight;
+        // const h = cellHeight;
 
         // const f = params.animate ? frame : params.frame;
 
