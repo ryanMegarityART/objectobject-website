@@ -36,6 +36,7 @@ export default function LogoCanvas() {
     const typeContext = typeCanvas.getContext("2d");
     //Our first draw
     loadImage(logoBlue).then((img: any) => {
+
       typeContext.drawImage(img, 0, 0, NUM_ROWS, NUM_COLS);
 
       const gWidth = CANVAS_WIDTH;
@@ -72,8 +73,8 @@ export default function LogoCanvas() {
           x,
           y,
           FRAME,
-          10,
-          amplitude / 10 //math.mapRange(0, -1, 1, valuesAverage / 5000, valuesAverage / 500)
+          1.5,
+          amplitude / 100 //math.mapRange(0, -1, 1, valuesAverage / 5000, valuesAverage / 500)
         );
 
         const angle = n * Math.PI;
@@ -113,9 +114,9 @@ export default function LogoCanvas() {
   }, [logic]);
 
   useEffect(() => {
-    if (amplitude > 10) {
+    if (amplitude > 50) {
       setAmplitudeIncrease(false);
-    } else if (amplitude < -10) {
+    } else if (amplitude < -50) {
       setAmplitudeIncrease(true);
     }
   }, [amplitude]);
