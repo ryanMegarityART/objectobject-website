@@ -14,8 +14,8 @@ const loadImage = (src: string) => {
 
 const CANVAS_HEIGHT = 300;
 const CANVAS_WIDTH = 300;
-const NUM_ROWS = 300;
-const NUM_COLS = 300;
+const NUM_ROWS = 200;
+const NUM_COLS = 200;
 const NUM_CELLS = NUM_ROWS * NUM_COLS;
 let FRAME = 0;
 
