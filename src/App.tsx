@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { SocialIcon } from "react-social-icons";
 import LogoCanvas from "./LogoCanvas";
+import logoBlue from "./logoBlue.jpg";
 
 function App() {
+  const [clickedSoundcloud, setClickedSoundcloud] = useState(false);
+
+  function checkFocus() {
+    if (document.activeElement === document.getElementsByTagName("iframe")[0]) {
+      setClickedSoundcloud(true);
+    }
+  }
+
+  window.setInterval(checkFocus, 100);
+
   return (
     <div className="App">
       <header
@@ -15,8 +26,10 @@ function App() {
         //   backgroundRepeat: "no-repeat",
         // }}
       >
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <LogoCanvas />
+        {clickedSoundcloud === false && (
+          <img src={logoBlue} className="App-logo" alt="logo" />
+        )}
+        {clickedSoundcloud === true && <LogoCanvas />}
         <p>__init__</p>
         <iframe
           title="soundcloud"

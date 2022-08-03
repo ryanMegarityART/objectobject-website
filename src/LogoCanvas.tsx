@@ -14,17 +14,19 @@ const loadImage = (src: string) => {
 
 const CANVAS_HEIGHT = 300;
 const CANVAS_WIDTH = 300;
-const NUM_ROWS = 150;
-const NUM_COLS = 150;
+const NUM_ROWS = 300;
+const NUM_COLS = 300;
 const NUM_CELLS = NUM_ROWS * NUM_COLS;
 let FRAME = 0;
 
 export default function LogoCanvas() {
-  const [makeMeLoop, setMakeMeLoop] = useState(1);
+  const [amplitudeIncrease, setAmplitudeIncrease] = useState(true);
+  const [amplitude, setAmplitude] = useState(1);
 
   const canvasRef = useRef(null);
   const typeCanvasRef = useRef(null);
 
+  // eslint-disable-next-line
   const logic = () => {
     const canvas = canvasRef.current;
     const typeCanvas = typeCanvasRef.current;
@@ -34,22 +36,6 @@ export default function LogoCanvas() {
     const typeContext = typeCanvas.getContext("2d");
     //Our first draw
     loadImage(logoBlue).then((img: any) => {
-      console.log(img);
-      typeContext.drawImage(
-        img,
-        0,
-        0,
-        (CANVAS_WIDTH / img.width) * img.width,
-        (CANVAS_HEIGHT / img.height) * img.height
-      );
-      context.drawImage(
-        img,
-        0,
-        0,
-        (CANVAS_WIDTH / img.width) * img.width,
-        (CANVAS_HEIGHT / img.height) * img.height
-      );
-
       typeContext.drawImage(img, 0, 0, NUM_ROWS, NUM_COLS);
 
       const gWidth = CANVAS_WIDTH;
@@ -60,6 +46,7 @@ export default function LogoCanvas() {
       const marginY = (CANVAS_HEIGHT - gHeight) * 0.5;
 
       const typeData = typeContext.getImageData(0, 0, NUM_COLS, NUM_ROWS).data;
+      // console.log(typeData)
 
       let len = NUM_CELLS;
       while (len--) {
@@ -70,6 +57,9 @@ export default function LogoCanvas() {
         let g = typeData[len * 4 + 1];
         let b = typeData[len * 4 + 2];
         // let a = typeData[len * 4 + 3];
+        if (r + g + b < 10) {
+          continue;
+        }
 
         const x = cellWidth * row;
         const y = cellHeight * col;
@@ -82,12 +72,12 @@ export default function LogoCanvas() {
           x,
           y,
           FRAME,
-          100,
-          0.12 //math.mapRange(0, -1, 1, valuesAverage / 5000, valuesAverage / 500)
+          10,
+          amplitude / 10 //math.mapRange(0, -1, 1, valuesAverage / 5000, valuesAverage / 500)
         );
 
         const angle = n * Math.PI;
-        const scale = math.mapRange(n, -1, 1, 50, 70);
+        const scale = math.mapRange(n, -1, 1, 50, 100);
 
         //   const scale = valuesAverage / 5;
 
@@ -107,15 +97,28 @@ export default function LogoCanvas() {
 
         context.stroke();
         context.restore();
-        FRAME++;
-        setMakeMeLoop(Math.random());
+      }
+
+      FRAME++;
+      if (amplitudeIncrease) {
+        setAmplitude(amplitude + 1);
+      } else {
+        setAmplitude(amplitude - 1);
       }
     });
   };
 
   useEffect(() => {
     logic();
-  }, [makeMeLoop]);
+  }, [logic]);
+
+  useEffect(() => {
+    if (amplitude > 10) {
+      setAmplitudeIncrease(false);
+    } else if (amplitude < -10) {
+      setAmplitudeIncrease(true);
+    }
+  }, [amplitude]);
 
   return (
     <div>
